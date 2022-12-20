@@ -1,0 +1,12 @@
+{% if app.user %}
+    {% if app.user.role == 'admin' %}
+        {# show admin nav bar #}
+        I AM ADMIN
+    {% else %}
+        {# show user nav bar #}
+        I AM USER
+    {% endif %}
+{% else %}
+    {# show guest nav bar #}
+    I AM GUEST
+{% endif %}

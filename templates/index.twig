@@ -1,6 +1,46 @@
 {% extends "layouts/app.layout.twig" %}
 
 {% block main %}
-    Hello
+
+    {% if app.user.role == 'admin' %}        
+        Admin Dashboard    
+
+    {% else %}
+
+        <section class="container-fluid bg-dark">
+            <div class="row gx-5">
+                <div class="col-md-4 p-5 bg-darker">
+                    <h1 class="text-light" >Explore a <span class="text-dark">world of endless</span> gaming possibilities.</h1>
+                </div>
+                <div class="col-md-8 p-5">                        
+                    
+                    <h2 class="text-light">All Games</h2>
+                    <div class="list">
+                        {% for game in app.games %}
+                            <div class="game">
+                                <div class="game-image"> 
+                                    <a href="/justplay/games/{{game.id}}">
+                                        <img src="{{ game.icon }}" alt="{{game.name}}">
+                                    </a>
+                                </div>
+
+                                <div class="game-info">
+                                        <a href="/justplay/games/{{game.id}}">
+                                        <div class="game-info-name">
+                                            {{game.name}}
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                </div>
+            </div>
+        </section>
+
+
+    {%endif%}
+
 {% endblock %}
+
+
 

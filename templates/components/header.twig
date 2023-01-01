@@ -1,12 +1,62 @@
-{% if app.user %}
-    {% if app.user.role == 'admin' %}
-        {# show admin nav bar #}
-        I AM ADMIN
-    {% else %}
-        {# show user nav bar #}
-        I AM USER
-    {% endif %}
-{% else %}
-    {# show guest nav bar #}
-    I AM GUEST
-{% endif %}
+<header>
+    <nav class="navbar navbar-dark bg-dark shadow">
+        <div class="container-fluid center">
+            <a class="navbar-brand" href="/justplay">Justplay</a>
+
+            {% if app.loggedIn %}
+                
+                {% if app.user.role == 'admin' %}                       
+                    <div>
+                        <button class="btn btn-warning my-2 my-sm-0" onclick="logout()">Admin Logout</button>
+                    </div>
+                {% else %}
+                    <ul>
+                        <li><a class="btn-warning">{{app.user.role}}</a></li>
+                    </ul>
+                    <div>
+                        <button class="btn btn-warning my-2 my-sm-0" onclick="logout()">User Logout</button>
+                    </div>
+                {% endif %}
+            {% else %}
+                {# show guest nav bar #}
+                <div>
+                    <button class="btn btn-outline-warning my-2 my-sm-0" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">Login</button>
+                    <a class="btn btn-warning my-2 my-sm-0">Become a member{{app.loggedIn}}</a>
+                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Log In</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" id="sample_form">
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password">
+                                    </div>
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary" id="login-submit" onclick="loginValidation()">Submit</button>
+                                    </div>
+
+                                    <div class="d-grid mt-3">
+                                        <span id="message" class="text-center">
+                                        
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </nav>
+</header>
+

@@ -1,0 +1,62 @@
+{% extends "layouts/app.layout.twig" %}
+
+{% block main %}
+
+    <table class="table align-middle mt-5 mb-5 bg-white container">
+        <thead class="bg-light">
+            <tr>
+                <th>ID</th>
+                <th>Image</th> 
+                <th>Game Name</th>   
+                <th>Image Path</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for game in app.games %}
+                <tr>
+                    <td>{{game.id}}</td>
+                    
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img
+                                src="/justplay/{{game.icon}}"
+                                alt=""
+                                style="width: 45px; height: 45px"
+                                class="rounded-circle"
+                                />
+                        </div>
+                    </td>
+
+                    <td>
+                        <p class="fw-normal mb-1">{{game.name}}</p>
+                    </td>
+                    
+                    <td>
+                        <span class="d-inline text-dark">{{game.icon}}</span>
+                    </td>
+
+                    <td>
+                        {{game.cat}}
+                    </td>
+
+                    <td>
+                        <a href="/justplay/games/{{game.id}}" class="btn badge bg-success rounded-pill">
+                            View
+                        </a>
+
+                        <button type="button" class="btn badge bg-warning rounded-pill">
+                            Edit
+                        </button>
+
+                        <button type="button" class="btn badge bg-danger rounded-pill">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock%}

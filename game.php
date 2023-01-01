@@ -1,19 +1,16 @@
 <?php
     require_once __DIR__."/utils/bootstrap.php";
-    include __DIR__."/utils/dbhandler.php";
+    require __DIR__."/utils/dbHandler.php";
 
-    $template = $twig->load('index.twig');
+    $template = $twig->load('game.twig');
 
-    if(!isset($_SESSION['user_id'])) {
-        echo $template->render(
-            [
-                'user' => null,
-                'app' => ['games' =>fetchAllGames()]
-            ]);
-    }
-    else
+    echo '<pre>';
+    var_dump($_SESSION);
+    echo '</pre>';
+
+    if(isset($_SESSION['loggedIn']))
     {
-        echo $template->render(
+         echo $template->render(
             ['app' => 
                 [
                     'loggedIn' => $_SESSION['loggedIn'],
@@ -23,8 +20,17 @@
                             'username' => $_SESSION['username'],
                             'role' => $_SESSION['role']
                         ],
-                    'games' => fetchAllGames()
+                    'game' => fetchGame($id)
                 ]
             ]);
     }
-   
+    else
+    {
+       echo $template->render(
+            ['app' => 
+                [
+                    'game' => fetchGame($id),
+                ]
+            ]);
+    }
+    

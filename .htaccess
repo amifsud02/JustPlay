@@ -1,1 +1,5 @@
-ErrorDocument 404 /custom404.php
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ FrontController.php [QSA,L]
+
+ErrorDocument 404 /justplay/404.php

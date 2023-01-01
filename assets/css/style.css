@@ -1,0 +1,130 @@
+:root {
+    --accent: #ffc107;
+
+    /* FONT-SIZES */
+    --heading: 4.75em;
+
+    /* GAME CARD VARS */
+    --border-radius: 0.5rem;
+    --box-shadow: 0 0 15px #00000080;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar{ 
+    display: none;
+}
+
+.bg-darker{
+    background-color: #1e1e1e;
+}
+
+h1{
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    line-height: 85px;
+    font-size: var(--heading);
+    text-transform: uppercase;
+}
+
+h1 span {
+    -webkit-box-decoration-break: clone;
+    background-color: var(--accent);
+    margin-left: -0.5rem;
+    padding: 0 0.5rem;
+    
+}
+
+h2 {
+    font-size: 2rem;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+h2, h3, h4, h5, h6{    
+    font-family: 'Rajdhani', sans-serif;
+}
+
+p{
+    font-family: 'Roboto', sans-serif;
+}
+
+/* GAME CARD STYLING */
+
+.list{ 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem 0.75rem;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.game-image { 
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    position: relative;
+}
+
+.game a {
+    text-decoration: none;
+    color: white;
+}
+
+.game-image img {
+    aspect-ratio: calc(8/11);
+    border-radius: var(--border-radius);
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+a[href] > * {
+    cursor: pointer;
+}
+
+.game-info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.game-info-name{ 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+/* */
+
+.game-pic {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    position: relative;
+}
+
+.game-pic img {
+    aspect-ratio: calc(7/10);
+    border-radius: var(--border-radius);
+    height: 100%;
+    object-fit: cover;
+}

@@ -46,7 +46,7 @@
                             View
                         </a>
 
-                        <button type="button" class="btn badge bg-warning rounded-pill">
+                        <button data-bs-toggle="modal" data-bs-target="#gameModal" type="button" class="btn badge bg-warning rounded-pill" onclick="displayModal({{game.id}})">
                             Edit
                         </button>
 
@@ -58,5 +58,19 @@
             {% endfor %}
         </tbody>
     </table>
+
+
+    <div class="modal fade" id="gameModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                   <div id="modal-information">
+
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 {% endblock%}

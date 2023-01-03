@@ -3,7 +3,9 @@
 {% block main %}
 
     {% if app.user.role == 'admin' %}        
-        Admin Dashboard    
+        
+        {% embed "admin.twig" %}
+        {% endembed %}
 
     {% else %}
 

@@ -1,0 +1,1 @@
+<!-- INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES (NULL, 'tony', 'mifsud', 'user'); -->

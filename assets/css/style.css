@@ -2,7 +2,7 @@
     --accent: #ffc107;
 
     /* FONT-SIZES */
-    --heading: 4.75em;
+    --heading: 4.75rem;
 
     /* GAME CARD VARS */
     --border-radius: 0.5rem;
@@ -12,7 +12,8 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 body
@@ -38,6 +39,7 @@ h1{
 
 h1 span {
     -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
     background-color: var(--accent);
     margin-left: -0.5rem;
     padding: 0 0.5rem;
@@ -55,6 +57,13 @@ h2, h3, h4, h5, h6{
     font-family: 'Rajdhani', sans-serif;
 }
 
+h4 {
+    color: white;
+    line-height: 1em;
+    margin: 0;
+    padding: 0;
+}
+
 p{
     font-family: 'Roboto', sans-serif;
 }
@@ -62,20 +71,27 @@ p{
 /* GAME CARD STYLING */
 
 .list{ 
+    display: -ms-grid; 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 1.5rem 0.75rem;
 }
 
 .game {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     gap: 0.75rem;
 }
 
 .game-image { 
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    -webkit-box-shadow: var(--box-shadow);
+            box-shadow: var(--box-shadow);
     overflow: hidden;
     position: relative;
 }
@@ -90,7 +106,8 @@ p{
     border-radius: var(--border-radius);
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
 }
 
 a[href] > * {
@@ -98,14 +115,20 @@ a[href] > * {
 }
 
 .game-info{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     gap: 0.5rem;
 }
 
 .game-info-name{ 
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
     width: 100%;
     font-weight: 500;
@@ -117,7 +140,8 @@ a[href] > * {
 
 .game-pic {
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+    -webkit-box-shadow: var(--box-shadow);
+            box-shadow: var(--box-shadow);
     overflow: hidden;
     position: relative;
 }
@@ -126,5 +150,6 @@ a[href] > * {
     aspect-ratio: calc(7/10);
     border-radius: var(--border-radius);
     height: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
 }

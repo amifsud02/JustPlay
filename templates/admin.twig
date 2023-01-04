@@ -1,4 +1,7 @@
 {% block main %}
+    <div class="container d-flex align-items-center justify-content-center mt-5">
+        <button class="btn btn-button btn-warning" data-bs-toggle="modal" data-bs-target="#createGame"><strong>Add New Game</strong></button>  
+    </div>
 
     <table class="table align-middle mt-5 mb-5 bg-white container">
         <thead class="bg-light">
@@ -65,6 +68,44 @@
                    <div id="modal-information">
 
                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="modal fade" id="createGame" tabindex="-1" aria-labelledby="createGameModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form method="post" id="newgame-form" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="newgamename" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="newgamename" name="newgamename">
+                        </div>
+                        <div class="mb-3">
+                            <label for="newgamecategory" class="form-label">Category</label>
+                            <input type="text" class="form-control" id="newgamecategory" name="newgamecategory">
+                        </div>
+                        {# 
+                        <div class="mb-3">
+                            <label for="newgameimagepath" class="form-label">Image</label>
+                            <input type="text" class="form-control" id="newgameimagepath" name="newgameimagepath">
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="file" name="fileToUpload" class='form-control'id="fileToUpload">
+                        </div> #}
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary" id="newgame-submit" onclick="createGame()">Submit</button>
+                        </div>
+
+                        <div class="d-grid mt-3">
+                            <span id="message" class="text-center">
+                            
+                            </span>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

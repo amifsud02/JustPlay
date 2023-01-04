@@ -22,6 +22,8 @@ function loginValidation() {
     
     ajaxRequest.send(formData);
 
+    console.log("AjaxRequest Results: ", ajaxRequest.responseText)
+
     ajaxRequest.onreadystatechange = function() {
         if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
 
@@ -49,7 +51,7 @@ function loginValidation() {
                 setTimeout(
                     function() {
                         window.location.href = "/justplay";
-                    }, 1000
+                    }, 5000
                 )
             }
             else{
@@ -59,6 +61,100 @@ function loginValidation() {
             }
         }
     }
+}
+
+function signupValidation(){ 
+    
+    event.preventDefault();
+
+    var p1 = document.querySelector('#newPassword').value;
+    var p2 = document.querySelector('#repeatPassword').value;
+    
+    if(p1.length == 0)
+    {
+        document.getElementById('signup-message').innerHTML = "Fill in all fields";
+        return false;
+    }
+    
+    if(p2.length == 0)
+    {
+        document.getElementById('signup-message').innerHTML = "Fill in all fields";
+
+        return false;
+    }
+
+    if(p1 !== p2)
+    {
+        document.getElementById('signup-message').innerHTML = "Passwords do not Match";
+        return false;
+    }
+    else
+    {
+
+        var formElements = document.querySelectorAll('.signup-controller');
+        
+        var formData = new FormData();
+    
+        for(var count = 0; count < formElements.length; count++)
+        {
+            if(formElements[count].value.length > 0)
+            {
+                formData.append(formElements[count].name, formElements[count].value);
+            }
+    
+            console.log(formElements[count].name, formElements[count].value);
+        }
+    
+        document.getElementById('signup-submit').disabled = true;
+    
+        // // Using Ajax to send and recieve the data and response from login.php
+        var ajaxRequest =  new XMLHttpRequest();
+        ajaxRequest.open('POST', '/justplay/signup.php');
+    
+        for (const [key, value] of formData) {
+            console.log(key, value);
+        }
+    
+        ajaxRequest.send(formData);
+    
+        ajaxRequest.onreadystatechange = function() {
+            if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
+    
+                document.getElementById('signup-submit').disabled = false;
+    
+                var response = JSON.parse(ajaxRequest.responseText);
+                
+                if(response.message == "Signup Successful"){
+                    document.getElementById('signup-form').reset();  
+    
+                    var messageDiv = document.getElementById('signup-message');
+                    
+                    if(messageDiv.classList.contains('text-danger'))
+                    {
+                        messageDiv.classList.remove("text-danger");
+                        messageDiv.classList.add("text-success");
+                    }else
+                    {
+                        messageDiv.classList.add("text-success");
+                    }
+    
+                    messageDiv.innerHTML = response.message;
+                    
+                    setTimeout(
+                        function() {
+                            window.location.href = "/justplay";
+                        }, 1000
+                    )
+                }
+                else{
+                    document.getElementById('signup-form').reset();                
+                    document.getElementById('signup-message').innerHTML = response.message;
+                    document.getElementById('signup-message').classList.add("text-danger");
+                }
+            }
+        }
+    }
+    return false;
 }
 
 function logout() {
@@ -87,7 +183,7 @@ function createGame() {
         console.log("Hello", formElements[count].value);
     }
     
-    document.getElementById('create-submit').disabled = true;
+    document.getElementById('newgame-submit').disabled = true;
 
     // Using Ajax to send and recieve the data and response from login.php
     var ajaxRequest =  new XMLHttpRequest();
@@ -102,13 +198,13 @@ function createGame() {
     ajaxRequest.onreadystatechange = function() {
         if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
 
-            document.getElementById('create-submit').disabled = false;
+            document.getElementById('newgame-submit').disabled = false;
 
             var response = JSON.parse(ajaxRequest.responseText);
             console.log(response);
 
             if(response.message == "Game Created Successfully"){
-                document.getElementById('sample_form').reset();  
+                document.getElementById('newgame-form').reset();  
 
                 var messageDiv = document.getElementById('message');
                 
@@ -130,7 +226,7 @@ function createGame() {
                 )
             }
             else{
-                document.getElementById('sample_form').reset();                
+                document.getElementById('newgame-form').reset();                
                 document.getElementById('message').innerHTML = response.message;
                 document.getElementById('message').classList.add("text-danger");
             }

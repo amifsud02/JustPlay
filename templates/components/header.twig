@@ -10,9 +10,8 @@
                         <button class="btn btn-warning my-2 my-sm-0" onclick="logout()">Admin Logout</button>
                     </div>
                 {% else %}
-                    <ul>
-                        <li><a class="btn-warning">{{app.user.role}}</a></li>
-                    </ul>
+                    <h4> Welcome Back, {{app.user.username}}</h4>
+                    
                     <div>
                         <button class="btn btn-warning my-2 my-sm-0" onclick="logout()">User Logout</button>
                     </div>
@@ -21,7 +20,7 @@
                 {# show guest nav bar #}
                 <div>
                     <button class="btn btn-outline-warning my-2 my-sm-0" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">Login</button>
-                    <a class="btn btn-warning my-2 my-sm-0">Become a member{{app.loggedIn}}</a>
+                    <button class="btn btn-warning my-2 my-sm-0" data-bs-toggle="modal" data-bs-target="#signupModal">Become a member</button>
                 </div>
 
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -47,6 +46,44 @@
 
                                     <div class="d-grid mt-3">
                                         <span id="message" class="text-center">
+                                        
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="signupModal">Sign Up</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" id="signup-form">
+                                    <div class="mb-3">
+                                        <label for="newUsername" class="form-label">Username</label>
+                                        <input type="text" class="form-control signup-controller" id="newUsername" name="newUsername">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="newPassword" class="form-label">Password</label>
+                                        <input type="password" class="form-control signup-controller" id="newPassword" name="newPassword">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="repeatPassword" class="form-label">Repeat Password</label>
+                                        <input type="password" id="repeatPassword" class="form-control signup-controller" name="repeatPassword">
+                                    </div>
+
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-primary" id="signup-submit" onclick="signupValidation()">Submit</button>
+                                    </div>
+
+                                    <div class="d-grid mt-3">
+                                        <span id="signup-message" class="text-center">
                                         
                                         </span>
                                     </div>

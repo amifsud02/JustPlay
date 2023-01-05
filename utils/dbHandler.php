@@ -19,7 +19,7 @@ function fetchGame($id) {
     $query->execute();
     $game = $query->fetch(PDO::FETCH_ASSOC);
 
-    echo json_encode($game);
+   // echo json_encode($game);
 
     return $game;
 }

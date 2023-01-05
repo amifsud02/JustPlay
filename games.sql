@@ -26,4 +26,4 @@ INSERT INTO `games` (`id`, `name`, `icon`, `cat`, `dt`) VALUES
 (25, 'Teamfight Tactics', 'upload/teamfight-tactics.webp', 1, '2022-12-01 05:23:03'),
 (26, 'Valorant', 'upload/valorant.webp', 1, '2022-12-01 05:23:03'),
 (27, 'Call Of Dute: Warzone', 'upload/warzone.webp', 1, '2022-12-01 05:23:03'),
-(28, 'X Defiant', 'upload/xdefiant.jpg', 1, '2022-12-01 05:23:03'),
+(28, 'X Defiant', 'upload/xdefiant.jpg', 1, '2022-12-01 05:23:03')

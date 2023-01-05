@@ -1,5 +1,9 @@
 <?php
     require_once __DIR__ . "/utils/bootstrap.php";
+
+    header("cache-control: private, max-age=3165000");
+    session_set_cookie_params(86400);    
+
     session_start();
 
     $homeURI  = '/justplay\/$/';
@@ -20,7 +24,7 @@
     {
         include 'admin.php';
     } 
-        elseif ($gameRE) 
+    elseif ($gameRE) 
     {
         $id = $gameid[1];
         include 'game.php';

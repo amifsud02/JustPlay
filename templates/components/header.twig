@@ -3,6 +3,13 @@
         <div class="container-fluid center">
             <a class="navbar-brand" href="/justplay">Justplay</a>
 
+            <div class="col-md-5">
+                <div class="content">                          
+                    <input type="text" name="user" id="user" class="form-control mt-2" placeholder="Enter Game Name" />  
+                    <div id="gameList"></div>       
+                </div>
+            </div>
+
             {% if app.loggedIn %}
                 
                 {% if app.user.role == 'admin' %}                       
@@ -17,6 +24,7 @@
                     </div>
                 {% endif %}
             {% else %}
+
                 {# show guest nav bar #}
                 <div>
                     <button class="btn btn-outline-warning my-2 my-sm-0" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button">Login</button>

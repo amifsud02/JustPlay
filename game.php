@@ -4,9 +4,9 @@
 
     $template = $twig->load('game.twig');
 
-    echo '<pre>';
-    var_dump($_SESSION);
-    echo '</pre>';
+    // echo '<pre>';
+    // var_dump($_SESSION);
+    // echo '</pre>';
 
     if(isset($_SESSION['loggedIn']))
     {

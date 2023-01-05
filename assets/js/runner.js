@@ -451,4 +451,3 @@ function resetTimeout() {
 
 document.addEventListener("mousemove", resetTimeout);
 document.addEventListener("keypress", resetTimeout);
-
